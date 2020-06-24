@@ -26,7 +26,16 @@ def login(request):
         return render(request,"cbit_vehicle_adminapp/login.html")
 
 def register(request):
-    return render(request,'cbit_vehicle_adminapp/register.html')
+    url = 'https://cosc-vehicle.herokuapp.com/pending'
+    
+    token = requests.post('https://cosc-vehicle.herokuapp.com/login',data = {'user_id':'123456789','password':'admin','usertype':'admin'})
+    token = token.json()['access_token']
+    
+    pending = requests.get(url,headers = {'Authorization':'Bearer {}'.format(token)}).json()
+
+    context = {'pending' : pending}
+    
+    return render(request,'cbit_vehicle_adminapp/register.html',context)
 
 def dismiss(request):
     return render(request,'cbit_vehicle_adminapp/dismiss.html')
