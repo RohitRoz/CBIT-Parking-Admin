@@ -22,21 +22,28 @@
           </div>
         </nav>
       <br>
-
+<center><h5><u>Details of the users who applied for a parking sticker</u></h5></center>
 <div class="accordion" id="dashboard">
   <div class="card">
     {% for i in pending %}
     <div class="card-header" id="heading{{ forloop.counter }}">
       <h2 class="mb-0">
         <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse{{ forloop.counter }}" aria-expanded="false" aria-controls="collapse{{ forloop.counter }}">
-          {{ i.reg_id }}
+          {{ i.user_id }} {{i.branch_name}}
         </button>
+        <h6 style="text-align:right">{{i.reg_date}}</h6>
       </h2>
     </div>
 
     <div id="collapse{{ forloop.counter }}" class="collapse" aria-labelledby="heading{{ forloop.counter }}" data-parent="#dashboard">
       <div class="card-body">
-        {{ i.vehicle_no }}
+        Name : {{i.full_name}}<br>
+        Registration ID : {{i.reg_id}}<br>
+        Vehicle number : {{i.vehicle_no}}<br>
+        Licence number : {{i.licence_no}}<br>
+        Vehicle type : {{i.vehicle_type}}<br>
+        Home address : {{i.home_address}}<br>
+
         <p class = text-center><a class="btn btn-secondary" href="#" role="button">Approve</a></p>
       </div>
     </div>
