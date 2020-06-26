@@ -43,8 +43,10 @@
         Licence number : {{i.licence_no}}<br>
         Vehicle type : {{i.vehicle_type}}<br>
         Home address : {{i.home_address}}<br>
-
-        <p class = text-center><a class="btn btn-secondary" href="#" role="button">Approve</a></p>
+        
+        <form action='register' method="get">
+          <button name="approve" type="submit" value="{{i.reg_id}}">Approve</button>
+        </form>
       </div>
     </div>
     {% endfor %}

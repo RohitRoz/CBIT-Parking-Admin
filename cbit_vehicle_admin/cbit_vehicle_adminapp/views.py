@@ -34,7 +34,9 @@ def register(request):
     global token1
     url = 'https://cosc-vehicle.herokuapp.com/pending'
 
+    approve = request.GET.get('approve')
 
+    requests.put(url,headers = {'Authorization':'Bearer {}'.format(token1)},data={'reg_id' : approve})
 
     pending = requests.get(url,headers = {'Authorization':'Bearer {}'.format(token1)}).json()
 
@@ -49,6 +51,11 @@ def dismiss(request):
 
 def fines(request):
     global token1
+
+    pay = request.GET.get('pay')
+
+    requests.put("https://cosc-vehicle.herokuapp.com/fine",headers = {'Authorization':'Bearer {}'.format(token1)},data={'request_id' : pay})
+    
     data = requests.get("https://cosc-vehicle.herokuapp.com/fine",
 								headers = {'Authorization':'Bearer {}'.format(token1)})
     payment1=[]
